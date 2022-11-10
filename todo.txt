@@ -1,0 +1,12 @@
+Todo:
+
+make scores object
+
+call api
+
+get info scores per week
+
+Write info to csv
+
+
+
