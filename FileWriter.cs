@@ -5,13 +5,16 @@ namespace test
     {
 
         //Creates CSV for weekScore
-        public  void  makeCSVWeekScore(List<Current> listWeekScores){
+        public  void  makeCSVWeekScore(List<Current> listWeekScores,string path){
             var builder = new StringBuilder();
             builder.AppendLine("Gameweek;Points;Total points;GW Rank;Overall Rank; ");
+            int i =0;
             foreach(var a in listWeekScores){
-               builder.AppendLine($"{a._event.ToString()};{a.points};{a.total_points};{a.rank};{a.overall_rank};");
+             i++;
+               builder.AppendLine($"{i};{a.points};{a.total_points};{a.rank};{a.overall_rank};");
             }
-            File.WriteAllText("C:\\Users\\Jolse\\no\\c#\\random\\test\\infoScores.CSV",builder.ToString());
+            File.WriteAllText(path,builder.ToString());
+            
 
         }
     }

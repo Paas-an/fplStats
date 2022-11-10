@@ -4,7 +4,7 @@ namespace test
     public class WebService
     {
         // Returns list of Current objects
-        public static List<Current> getWeeklyScores(string url){
+        public static List<Current> getListFromJSONProperty(string url,string property){
 
                 using(var client =new HttpClient()){
 
@@ -13,20 +13,12 @@ namespace test
                 var result = client.GetAsync(endpoint).Result;
                 var jsonResult = result.Content.ReadAsStringAsync().Result;
                 var parsed = JsonDocument.Parse(jsonResult);
-                var weekScores = parsed.RootElement.GetProperty("current");
+                var jsonstring = parsed.RootElement.GetProperty(property);
 
-                var List = JsonSerializer.Deserialize<List<Current>>(weekScores);
+                var List = JsonSerializer.Deserialize<List<Current>>(jsonstring);
                 
                 return List;
             }
-        }
-
-         
-
-        public static void Main(String[] args ){
-           var liste = getWeeklyScores("https://fantasy.premierleague.com/api/entry/7502607/history/");
-           FileWriter f = new FileWriter();
-           f.makeCSVWeekScore(liste);
         }
         
     }
