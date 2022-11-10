@@ -15,7 +15,7 @@ namespace test
                 var parsed = JsonDocument.Parse(jsonResult);
                 var jsonstring = parsed.RootElement.GetProperty(property);
 
-                var List = JsonSerializer.Deserialize<List<Current>>(jsonstring);
+                var List  = JsonSerializer.Deserialize<List<Current>>(jsonstring)!;
                 
                 return List;
             }

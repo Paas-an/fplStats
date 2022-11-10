@@ -5,7 +5,7 @@ namespace test
 
     public class Rootobject
     {
-        public Current[] current { get; set; }
+        public Current[]? current { get; set; }
     }
 
     public class Current
